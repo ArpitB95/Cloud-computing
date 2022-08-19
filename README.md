@@ -16,3 +16,181 @@
 - Use - official use , gaming
 
 <img width="670" alt="aws diaa" src="https://user-images.githubusercontent.com/110182832/185413028-a6754e0d-9921-4ffa-bf61-7dbadaa3a5fe.png">
+
+
+## Create EC2 instance:
+### Here, I've created EC2 instance named app, which has code of app that needs to bee launched.
+
+## Step-1 - Create EC2 instanc on AWS
+
+- Select the Operating system
+
+<img width="950" alt="1" src="https://user-images.githubusercontent.com/110182832/185690198-14ef3b38-79b7-4a92-ad9d-9b5a10cf39e2.png">
+
+
+## Step -2 - Select the Processing Power
+
+<img width="955" alt="2" src="https://user-images.githubusercontent.com/110182832/185690402-9f7f67f5-650d-4d1a-98ce-df3ca146fa0c.png">
+
+
+## Step-3 - Congigure instance details
+
+<img width="946" alt="3" src="https://user-images.githubusercontent.com/110182832/185690422-a75d5cf7-34d8-494d-bab4-92e50208e7e6.png">
+
+Change following:
+Number of Instance-1
+Subnet - Devops student default 1a
+Auto assign public id - Enable
+
+## Step-4 - Select the storage
+
+<img width="944" alt="4" src="https://user-images.githubusercontent.com/110182832/185691614-f7eb7264-5a04-4bd4-90e4-f465211ad842.png">
+
+
+
+## Step- 5 - Attach tags
+
+- Give name to the instance
+
+<img width="941" alt="5" src="https://user-images.githubusercontent.com/110182832/185691625-4cda2ca7-9536-4051-a0f5-e6c0cebb76dd.png">
+
+
+## Step-6 - Assign the ports that should be allow to interact with this EC2
+
+<img width="942" alt="6" src="https://user-images.githubusercontent.com/110182832/185691647-be858938-ebb1-481a-b640-8dbc64da4571.png">
+
+- Now, click review and launch.
+
+## To enter the EC2 virtual machine copy Example link shown below and enter in terminal from .ssh folder
+
+<img width="567" alt="7" src="https://user-images.githubusercontent.com/110182832/185692257-080a58bd-9072-4ae5-9536-16e057650acb.png">
+
+
+<img width="462" alt="8" src="https://user-images.githubusercontent.com/110182832/185692278-215ccf78-2585-4c88-b109-c374d2981d67.png">
+
+
+## Now Install all the dependencies requiren in app EC2
+
+- Run following commands
+
+````
+# update & upgrade ubuntu
+sudo apt-get update
+sudo apt-get upgrade -y
+
+# nginx install
+sudo apt-get install nginx -y
+sudo systemctl enable nginx
+sudo systemctl start nginx
+
+# nodejs install
+
+curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -    # This will download nodejs version 6 or above from website
+sudo apt-get install -y nodejs  # Now install nodejs
+
+## Install npm
+
+sudo apt-get install npm
+
+# pm2 install
+sudo npm install pm2 -g
+
+````
+
+## Reconfig NGINX which allows reverse proxy ( This means link will work without giving port ex:3000 )
+- From home location run 'cd /etc' then 'cd nginx' then 'cd sites-available' then 'sudo nano default'
+
+OR 
+
+' sudo nano /etc/nginx/sites-available/default'
+
+- In default file , under server_name _;
+      under location change to 'proxy_pass http://localhost:3000;'
+      
+      
+  <img width="456" alt="9" src="https://user-images.githubusercontent.com/110182832/185694569-7c13248d-3250-4000-8a60-82437210fc84.png">
+
+## Run 'npm install' and 'npm start' and app will be launched
+
+
+## How to migrate file from local host to Ec2
+## With scp command
+- 'scp -i [key name] -r [file location in local host] [file destination]
+- file destination will be @user:PUBLIC_DNS , so here it will be ubuntu@ec2-34-253-181-132.eu-west-1.compute.amazonaws.com
+
+
+
+
+## Create second EC2 VM - data base EC2
+
+- Follow same steps to create VM
+- For security
+
+
+<img width="863" alt="10" src="https://user-images.githubusercontent.com/110182832/185696231-c6bc5c08-cb97-44fc-aef0-1d382394ce34.png">
+
+## Now Install dependencies in second EC2 (Data base EC2)
+
+````
+# update & upgrade ubuntu
+sudo apt-get update
+sudo apt-get upgrade -y
+
+# retrieve key from mongodb
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv D68FA50FEA312927
+
+# Install required packages
+echo "deb https://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.2 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.2.list
+
+# updates ubuntu
+sudo apt-get update
+sudo apt-get upgrade -y
+
+# Install mongodb
+sudo apt-get install -y mongodb-org=3.2.20 mongodb-org-server=3.2.20 mongodb-org-shell=3.2.20 mongodb-org-mongos=3.2.20 mongodb-org-tools=3.2.20
+
+# enabl mongodb
+sudo systemctl enable mongod
+
+# start mongodb
+sudo systemctl restart mongod
+
+````
+## Now, config mongod.conf file and change the bind ip to 0.0.0.0
+- Navigate from home location to /etc and then to mongod.conf
+
+<img width="352" alt="12" src="https://user-images.githubusercontent.com/110182832/185697209-27561877-30af-4910-bf21-31f7d4ebfeeb.png">
+
+- Change bind IP to 0.0.0.0
+
+<img width="443" alt="11" src="https://user-images.githubusercontent.com/110182832/185697273-2f54c063-8644-4241-8c03-f6f8a9a28d1e.png">
+
+- Now restart mongod by 'sudo systemctl restart mongod'
+
+## Now, set environment variable in app EC2 VM
+
+- From home location run 'sudo nano .bashrc'
+
+<img width="352" alt="12" src="https://user-images.githubusercontent.com/110182832/185699102-9c94750b-0bb3-44ea-8fd1-3a0b396aab48.png">
+
+- Inside .bashrc file, at the end set environment variable called DB_HOST by following command
+'export DB_HOST=mongod://give public ipv4 of db ec2/27017/posts'
+
+Here, 'export DB_HOST=mongodb://172.31.26.81:27017/posts'
+
+<img width="456" alt="13" src="https://user-images.githubusercontent.com/110182832/185699207-302ace58-2cb6-4850-ba9c-f178de048844.png">
+
+
+- 172.31.26.81:27017/posts is public IPv4 of db VM and 27017 is the port of db EC2
+
+<img width="736" alt="14" src="https://user-images.githubusercontent.com/110182832/185699036-c268bd9f-6df4-47a1-9c8d-954125695412.png">
+
+
+- Inside app directory goto seeds directory and from inside seeds folder run 'node seed.js'
+
+- Now, from app (where app.js folder is located)
+- Run 'npm install' or 'sudo apt-get install npm'
+- And 'npm start'
+
+
+ 
