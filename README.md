@@ -299,6 +299,13 @@ Here, 'export DB_HOST=mongodb://172.31.26.81:27017/posts'  (172.31.26.81 is priv
 - During the holiday period, it is advisable to run an AMI of an instance as it costs less than actual instance.
 - AMI is basically a carbon copy of the instance it created from.
 
+
+<img width="824" alt="full ami" src="https://user-images.githubusercontent.com/110182832/186005703-9bacd5ac-9050-4117-b078-b3dfa2369614.png">
+
+
+
+
+
 ## Create AMI for app ec2 and db ec2
 
 
