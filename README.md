@@ -1,4 +1,4 @@
-## Cloud cmputing
+## Cloud computing
 
 
 ### Purchasing a Laptop / system
@@ -17,6 +17,81 @@
 
 <img width="670" alt="aws diaa" src="https://user-images.githubusercontent.com/110182832/185413028-a6754e0d-9921-4ffa-bf61-7dbadaa3a5fe.png">
 
+
+## What is cloud computing ?
+- It is a service that use remote servers hosted on the internet to store,​
+  Manage and process data​ rather than a local server or personal computer.
+
+- A cloud can be private or public. A public cloud sells services to anyone
+  on the internet.
+- A private cloud supplies hosted services to a limited number of people, with certain access
+ and permissions. Best example of private cloud users is government agencies
+- they have their own private cloud for security reasons
+
+- Be it Private or public, the goal of cloud computing is to provide easy, scalable access to computing resources and IT services.
+
+ ## Pros :
+- You can access your data from any device and any where in the world as long as you
+  have permission to access the data.
+- you can easily and instantly deploy servers and can go live in minutes or seconds.
+- You can upgrade or downgrade your system as per your requirements.
+  let's say traffic on your server increses suddenly than you can upscale and 
+  host another servers in minutes which is not possible with on premise server.
+- Onother benefit of cloud computing is that pay only for that you used.
+  If you've used your ec2 instance for just an hour than pay for that period of time only
+  rather than investing in hardware and host it on premise, cloud computing is much cheaper.
+
+
+## Cons:
+- There is possibility of data lost or theft from the data storage, which is very
+   rare but can be happen due to natural calamities or in act of war.
+- You have limited control over the system and also some time risk to the security.
+
+## AWS Global Infrastructure:
+
+
+
+
+
+
+
+
+
+
+- AWS global infrastructure consists of regions and availability zones
+- AZs are essentially the physical data centers of AWS. This is where the actual compute, storage, network, and database resources are hosted that we as 
+  consumers provision within our Virtual Private Clouds (VPCs).
+
+- As of now, there are total 26 regions across the globe and 84 availability zones that provides amazon web services.
+- So, each region can have multiple availability zones and each availability zone has multiple data centers.
+- So, let's say if your data is highly important than you can store it to multiple 
+  availability zones or to multiple regions. So, something happens to one availability
+  zone and whole availability zone goes down the you still have your data safe in another zone. Of course you've to pay for both the zones to store your data.
+
+
+## Types of cloud services
+- Now, there are basically 3 types of cloud services available
+- Infrastructure as a service
+- platform as a service and software as a service
+
+
+
+![types of cloud](https://user-images.githubusercontent.com/110182832/185909059-c81ac2c8-348a-45da-97bf-ccf763242520.png)
+
+
+
+
+
+- In traditional or on premise services, company has to manage everything from servers, storage, networking, data and security.
+
+- But in Iaas you've to manage only your applications, data, runtime and miidleware.
+ - ex iaas: AWS, microsoft azure
+
+ - ex paas: AWS elastic beanstalk, Facebook
+
+ - ex of saas: Gmail, netflix, salesforce
+ 
+ 
 
 ## Create EC2 instance:
 ### Here, I've created EC2 instance named app, which has code of app that needs to bee launched.
