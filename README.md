@@ -47,11 +47,26 @@
    rare but can be happen due to natural calamities or in act of war.
 - You have limited control over the system and also some time risk to the security.
 
+
+## 4 Pillars / key benefits of cloud computing
+- Ease of use - It's very easy to use and accessible from any device and from anywhere in the world.
+-  You can access cloud services from anywhere any time with any device as long as you've permission to access those data.
+-  For Ex: Netflix, Monzo
+
+- Flexibility - Cloud computing offers businesses flexibility and scalability when it comes to computing needs.
+- Cloud computing allows your employees to be more flexible – both in and out of the workplace. Employees can access files using web-enabled devices such as      smartphones, laptops and notebooks.
+
+- Cost - It has pay as you go model. So you've to pay only for what you've used.
+
+- Robustness - Whether you experience a natural disaster, power failure or other crisis, having your data stored in the cloud ensures it is backed up and protected in a secure and safe location. Being able to access your data again quickly allows you to conduct business as usual, minimising any downtime and loss of productivity.
+
+
+
 ## AWS Global Infrastructure:
 
 
 
-
+    
 
 
 
