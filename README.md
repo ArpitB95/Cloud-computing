@@ -357,7 +357,7 @@ Here, 'export DB_HOST=mongodb://172.31.26.81:27017/posts'  (172.31.26.81 is priv
 
 
 - ## Create S3 bucket
-
+- ## To run any of the folloeing file 'python file_name'
 
 ```
 import boto3
@@ -433,4 +433,18 @@ s3=boto3.client('s3')
 
 s3.delete_bucket(Bucket='eng122-arpit-bucketboto')
 
+```
+### OR
+
+```
+import boto3
+
+AWS_REGION = "eu-west-1"
+
+resource = boto3.resource("s3", region_name=AWS_REGION)
+
+bucket_name = "eng122-pravin-bucket-task"
+
+s3_bucket = resource.Bucket(bucket_name)
+s3_bucket.delete()
 ```
