@@ -443,7 +443,7 @@ AWS_REGION = "eu-west-1"
 
 resource = boto3.resource("s3", region_name=AWS_REGION)
 
-bucket_name = "eng122-pravin-bucket-task"
+bucket_name = "eng122-arpit-bucketboto"
 
 s3_bucket = resource.Bucket(bucket_name)
 s3_bucket.delete()
