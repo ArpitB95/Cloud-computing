@@ -324,21 +324,53 @@ Here, 'export DB_HOST=mongodb://172.31.26.81:27017/posts'  (172.31.26.81 is priv
 ![drp](https://user-images.githubusercontent.com/110182832/186161488-15c96b49-b976-4476-8095-517853051dc9.png)
 
 
+### To create S3 bucket from CLI, we need python 3.7 above, pip3, aws cli and AWS access and secret key configuration
 
 ## Setting up AWS keys:
-
 ## Fisrt download the dependencies:
--sudo apt-get upgrade -y
+- sudo apt-get upgrade -y
 - alias python=python3
 
--'sudo pip3 install awscli'
+- 'sudo pip3 install awscli'
 
-## Congigure AWS CLI
+## Configure AWS CLI
 - run command 'aws configure'
 - enter your access key
 - enter your secret access key
 - zone- 'eu-west-1'
 - 'json'
+
+
+## Create S3 bucket
+
+
+```
+import boto3
+
+s3 = boto3.client('s3')
+
+s3.create_bucket(Bucket = 'eng122-arpit-bucketboto',CreateBucketConfiguration={'LocationConstraint':'eu-west-1'})
+```
+### OR
+
+```
+#!/usr/bin/env python3
+
+import boto3
+
+AWS_REGION = "us-east-2"
+
+resource = boto3.resource("s3", region_name=AWS_REGION)
+
+bucket_name = "hands-on-cloud-demo-bucket"
+location = {'LocationConstraint': AWS_REGION}
+
+bucket = resource.create_bucket(
+    Bucket=bucket_name,
+    CreateBucketConfiguration=location)
+
+print("Amazon S3 bucket has been created")
+```
 
 
 
@@ -360,7 +392,7 @@ import boto3
 
 s3=boto3.client('s3')
 
-s3.download_file('eng122-arpit-bucketboto','test.txt','new/test.txt')
+s3.download_file('eng122-arpit-bucketboto','test.txt','new/test.txt')  #('Bucket_Name', 'Object_Name', 'File_Name')
 
 ```
 
