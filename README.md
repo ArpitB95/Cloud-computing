@@ -340,3 +340,50 @@ Here, 'export DB_HOST=mongodb://172.31.26.81:27017/posts'  (172.31.26.81 is priv
 - zone- 'eu-west-1'
 - 'json'
 
+
+
+## Upload object / file to S3 from EC2 using boto3
+
+```
+import boto3
+
+s3 = boto3.client('s3')
+
+s3.upload_file('test.txt','eng122-arpit-bucketboto')
+
+```
+
+## Download a file from S3 bucket to EC2
+
+```
+import boto3
+
+s3=boto3.client('s3')
+
+s3.download_file('eng122-arpit-bucketboto','test.txt','new/test.txt')
+
+```
+
+
+## Delete object from S3
+
+```
+import boto3
+
+s3 = boto3.client('s3')
+
+
+s3.delete_object(Bucket='eng122-arpit-bucketboto', Key='object/t1.txt')
+
+```
+
+## Delete S3 Bucket
+
+```
+import boto3
+
+s3=boto3.client('s3')
+
+s3.delete_bucket(Bucket='eng122-arpit-bucketboto')
+
+```
