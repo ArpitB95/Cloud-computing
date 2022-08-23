@@ -318,22 +318,37 @@ Here, 'export DB_HOST=mongodb://172.31.26.81:27017/posts'  (172.31.26.81 is priv
 
 
 
-## AWS Disaster Recovery Plan
 
+
+# AWS Disaster Recovery Plan
+
+## AWs DRP is used to secure your data, so something happens to the region or availability zone, still you can access your data.
+
+- For example, here we're storing our data and hosting instances in ireland region.
+- In case of unexpected desaster:
+- Have an AMI backup
+- Sore your data to multiple AZs - eu-west-1a,1b,1c
+- Second option is to store in multiple region, Ireland as well London
+- If whole AWS goes down and data is highly important then have multi cloud deployment in AWS as well Azure or GC
+- Hybrid cloud - localhost & public cloud
+ 
 
 ![drp](https://user-images.githubusercontent.com/110182832/186161488-15c96b49-b976-4476-8095-517853051dc9.png)
 
 
+
+
+
 ### To create S3 bucket from CLI, we need python 3.7 above, pip3, aws cli and AWS access and secret key configuration
 
-## Setting up AWS keys:
-## Fisrt download the dependencies:
+## -Setting up AWS keys:
+## -Fisrt download the dependencies:
 - sudo apt-get upgrade -y
 - alias python=python3
 
 - 'sudo pip3 install awscli'
 
-## Configure AWS CLI
+## -Configure AWS CLI
 - run command 'aws configure'
 - enter your access key
 - enter your secret access key
@@ -341,7 +356,7 @@ Here, 'export DB_HOST=mongodb://172.31.26.81:27017/posts'  (172.31.26.81 is priv
 - 'json'
 
 
-## Create S3 bucket
+## - Create S3 bucket
 
 
 ```
@@ -374,7 +389,7 @@ print("Amazon S3 bucket has been created")
 
 
 
-## Upload object / file to S3 from EC2 using boto3
+## - Upload object / file to S3 from EC2 using boto3
 
 ```
 import boto3
@@ -385,7 +400,7 @@ s3.upload_file('test.txt','eng122-arpit-bucketboto')
 
 ```
 
-## Download a file from S3 bucket to EC2
+## - Download a file from S3 bucket to EC2
 
 ```
 import boto3
@@ -397,7 +412,7 @@ s3.download_file('eng122-arpit-bucketboto','test.txt','new/test.txt')  #('Bucket
 ```
 
 
-## Delete object from S3
+## - Delete object from S3
 
 ```
 import boto3
@@ -409,7 +424,7 @@ s3.delete_object(Bucket='eng122-arpit-bucketboto', Key='object/t1.txt')
 
 ```
 
-## Delete S3 Bucket
+## - Delete S3 Bucket
 
 ```
 import boto3
