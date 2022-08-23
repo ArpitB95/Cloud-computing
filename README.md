@@ -318,4 +318,7 @@ Here, 'export DB_HOST=mongodb://172.31.26.81:27017/posts'  (172.31.26.81 is priv
 
 
 
+## AWS Disaster Recovery Plan
 
+
+![drp](https://user-images.githubusercontent.com/110182832/186161488-15c96b49-b976-4476-8095-517853051dc9.png)
