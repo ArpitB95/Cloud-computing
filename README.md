@@ -325,9 +325,9 @@ Here, 'export DB_HOST=mongodb://172.31.26.81:27017/posts'  (172.31.26.81 is priv
 ## AWs DRP is used to secure your data, so something happens to the region or availability zone, still you can access your data.
 
 - For example, here we're storing our data and hosting instances in ireland region.
-- In case of unexpected desaster:
+- In case of unexpected disaster:
 - Have an AMI backup
-- Sore your data to multiple AZs - eu-west-1a,1b,1c
+- Store your data to multiple AZs - eu-west-1a,1b,1c
 - Second option is to store in multiple region, Ireland as well London
 - If whole AWS goes down and data is highly important then have multi cloud deployment in AWS as well Azure or GC
 - Hybrid cloud - localhost & public cloud
@@ -360,7 +360,7 @@ Here, 'export DB_HOST=mongodb://172.31.26.81:27017/posts'  (172.31.26.81 is priv
 - ## To run any of the folloeing file 'python file_name'
 
 ```
-import boto3
+import boto3      # imports boto3 package
 
 s3 = boto3.client('s3')
 
@@ -396,7 +396,7 @@ import boto3
 
 s3 = boto3.client('s3')
 
-s3.upload_file('test.txt','eng122-arpit-bucketboto')
+s3.upload_file('test.txt','eng122-arpit-bucketboto')   ## ('File_Name', 'Bucket_Name')
 
 ```
 
