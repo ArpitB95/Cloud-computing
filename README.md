@@ -285,6 +285,9 @@ Here, 'export DB_HOST=mongodb://172.31.26.81:27017/posts'  (172.31.26.81 is priv
 - 'npm install'
 - And 'npm start'
 
+- If full page is not desplayed then go to app/seeds and run 'node seed.js'
+- come back to app folder and run 'npm start'
+
 
  
  ## Amazon machine image (AMI)
