@@ -451,3 +451,60 @@ bucket_name = "eng122-arpit-bucketboto"
 s3_bucket = resource.Bucket(bucket_name)
 s3_bucket.delete()
 ```
+
+
+
+
+## Launce EC2 from AMI with user data (script)
+
+### APP EC2
+- Enter following scrip in user data to automate installing the dependencies
+
+```
+#!/bin/bash
+
+sudo apt-get update -y
+sudo apt-get upgrade -y
+
+sudo apt install nginx -y
+sudo systemctl restart nginx
+sudo systemctl enable nginx
+
+
+sudo apt-get purge nodejs npm
+curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
+sudo apt-get install -y nodejs
+sudo apt-get install npm -y
+
+sudo apt install npm -y
+npm install express -y
+npm install mongoose -y
+```
+
+## DB EC2
+- Enter following script in user data to automate downloading of dependencies
+
+```
+#!/bin/bash
+
+sudo apt-get update -y
+
+sudo apt-get upgrade -y
+
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv D68FA50FEA312927
+
+echo "deb https://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.2 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.2.list
+
+sudo apt-get update -y
+
+sudo apt-get upgrade -y
+
+ sudo apt-get install -y mongodb-org=3.2.20 mongodb-org-server=3.2.20 mongodb-org-shell=3.2.20 mongodb-org-mongos=3.2.20 mongodb-org-tools=3.2.20 
+
+sudo systemctl restart mongod
+
+sudo systemctl enable  mongod
+```
+
+- To check in dependencies are downloaded successfully or not, enter to DB instance and run 'sudo systemctl status  mongod'
+- It will show mongod status as active. so it has downloaded successfully.
